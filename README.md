@@ -4,8 +4,50 @@
 
 ## Examples
 
-- [Chat](#chat-in-bash)
 - [Text to Speech](#text-to-speech-in-bash)
+- [Chat](#chat-in-bash)
+
+### Text to Speech in Bash
+
+We can read a file out loud from the command line.
+For example, with the OpenAI API:
+
+```sh
+$ OPENAI_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts | vlc - --intf dummy
+```
+
+Here, we set the key, print the file `myfile.txt` to stdout, pipe it to `trf` to generate mp3 audio, and pipe that to `vlc` to play it.
+The `--intf dummy` is optional; it just prevents `vlc` from opening a GUI.
+
+One way to make this easier to use is to create a Bash script that sets the environment variable and runs the command.
+For example, create a file called `spk.sh` (abbreviation for "speak") with the following content:
+
+```bash
+#!/usr/bin/env bash
+
+# Exit on (pipe) errors.
+set -euo pipefail
+
+export OPENAI_KEY="$(cat /path/to/key)"
+
+trf tts | vlc - --intf dummy
+```
+
+After adding `spk.sh` to your PATH, you can use it like this:
+
+```sh
+$ cat myfile.txt | spk
+```
+
+### Other Text to Speech Commands
+
+```sh
+$ DEEPINFRA_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts | vlc -
+```
+
+```sh
+$ DEEPINFRA_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts --output myfile.mp3
+```
 
 ### Chat in Bash
 
@@ -62,48 +104,6 @@ Here is the text to check:
 MODEL="deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 
 (echo "$PROMPT"; cat README.md) | trf chat --model="$MODEL"
-```
-
-### Text to Speech in Bash
-
-We can read a file out loud from the command line.
-For example, with the OpenAI API:
-
-```sh
-$ OPENAI_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts | vlc - --intf dummy
-```
-
-Here, we set the key, print the file `myfile.txt` to stdout, pipe it to `trf` to generate mp3 audio, and pipe that to `vlc` to play it.
-The `--intf dummy` is optional; it just prevents `vlc` from opening a GUI.
-
-One way to make this easier to use is to create a Bash script that sets the environment variable and runs the command.
-For example, create a file called `spk.sh` (abbreviation for "speak") with the following content:
-
-```bash
-#!/usr/bin/env bash
-
-# Exit on (pipe) errors.
-set -euo pipefail
-
-export OPENAI_KEY="$(cat /path/to/key)"
-
-trf tts | vlc - --intf dummy
-```
-
-After adding `spk.sh` to your PATH, you can use it like this:
-
-```sh
-$ cat myfile.txt | spk
-```
-
-### Other Text to Speech Commands
-
-```sh
-$ DEEPINFRA_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts | vlc -
-```
-
-```sh
-$ DEEPINFRA_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts --output myfile.mp3
 ```
 
 ## Philosophy
