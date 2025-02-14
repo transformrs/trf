@@ -4,6 +4,8 @@ version = "1.0.0"
 edition = "2021"
 authors = ["Rik Huijzer"]
 license = "MIT"
+description = "Multimodal AI in the terminal"
+repository = "https://github.com/transformrs/trf"
 
 [dependencies]
 anyhow = "1"
