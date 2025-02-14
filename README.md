@@ -2,6 +2,26 @@
 
 <h3 align="center">Supports OpenAI, DeepInfra, Google, Hyperbolic, and others</h3>
 
+## Installation
+
+```sh
+cargo install trf
+```
+
+## Usage
+
+Text to speech:
+
+```sh
+$ trf tts --help
+```
+
+Chat:
+
+```sh
+$ trf chat --help
+```
+
 ## Examples
 
 - [Text to Speech](#text-to-speech-in-bash)
