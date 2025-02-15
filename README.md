@@ -8,24 +8,21 @@
 cargo install trf
 ```
 
-## Usage
+## Usage Examples
 
 Text to speech:
 
 ```sh
-$ trf tts --help
+$ OPENAI_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts --output=myfile.mp3
 ```
 
 Chat:
 
 ```sh
-$ trf chat --help
+$ DEEPINFRA_KEY="<KEY>"; echo "hi there" | trf chat
 ```
 
-## Examples
-
-- [Text to Speech](#text-to-speech-in-bash)
-- [Chat](#chat-in-bash)
+## More Examples
 
 ### Text to Speech in Bash
 
