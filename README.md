@@ -2,25 +2,37 @@
 
 <h3 align="center">Supports OpenAI, DeepInfra, Google, Hyperbolic, and others</h3>
 
+## Key Features
+
+You can convert text to speech (tts) and play it from the command line:
+
+```sh
+$ export OPENAI_KEY="$(grep 'OPENAI_KEY' .env | cut -d= -f2)"
+
+$ cat myfile.txt | trf tts | vlc - --intf dummy
+```
+
+You can also chat with an LLM:
+
+```sh
+$ export DEEPINFRA_KEY="$(grep 'DEEPINFRA_KEY' .env | cut -d= -f2)"
+
+$ echo "This is a test. Respond with 'hello world'." | trf chat
+hello world
+```
+
 ## Installation
 
 ```sh
 cargo install trf
 ```
 
-## Usage Examples
-
-Text to speech:
+or via [`cargo-binstall`](https://github.com/cargo-bins/cargo-binstall):
 
 ```sh
-$ OPENAI_KEY="$(cat /path/to/key)"; cat myfile.txt | trf tts --output=myfile.mp3
+cargo binstall trf
 ```
 
-Chat:
-
-```sh
-$ DEEPINFRA_KEY="<KEY>"; echo "hi there" | trf chat
-```
 
 ## More Examples
 

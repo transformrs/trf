@@ -54,6 +54,7 @@ pub(crate) async fn chat(args: &ChatArgs, key: &transformrs::Key, input: &str) {
             // Ensure the output is printed immediately.
             std::io::stdout().flush().unwrap();
         }
+        println!();
     } else {
         let resp = transformrs::chat::chat_completion(&provider, key, &model, &messages)
             .await
