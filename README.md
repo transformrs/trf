@@ -4,7 +4,7 @@
 
 ## Key Features
 
-You can convert text to speech (tts) and play it from the command line:
+You can convert text to speech (tts) and, for example, play it from the command line:
 
 ```sh
 $ export OPENAI_KEY="$(grep 'OPENAI_KEY' .env | cut -d= -f2)"
@@ -33,6 +33,7 @@ or via [`cargo-binstall`](https://github.com/cargo-bins/cargo-binstall):
 cargo binstall trf
 ```
 
+For a list of supported providers, see the table in the [transformrs](https://github.com/rikhuijzer/transformrs) README.
 
 ## More Examples
 
