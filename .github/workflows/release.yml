@@ -65,3 +65,5 @@ jobs:
         with:
           fail_on_unmatched_files: true
           files: ${{ steps.release.outputs.dst }}
+          body: |
+            Notable changes since the last release are documented in the [CHANGELOG.md](https://github.com/rikhuijzer/trf/blob/main/CHANGELOG.md) file.
