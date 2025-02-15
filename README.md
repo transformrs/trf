@@ -12,6 +12,19 @@ $ export OPENAI_KEY="$(grep 'OPENAI_KEY' .env | cut -d= -f2)"
 $ cat myfile.txt | trf tts | vlc - --intf dummy
 ```
 
+Or generate an image from text:
+
+```sh
+$ export DEEPINFRA_KEY="$(grep 'DEEPINFRA_KEY' .env | cut -d= -f2)"
+
+$ echo "A photo of a beach in Hawaii" | cargo run -- --verbose tti \
+    --model=black-forest-labs/FLUX-1-dev \
+    --output=myfile --width=1024 --height=1024 --steps=25
+
+$ ls myfile*
+myfile.png
+```
+
 You can also chat with an LLM:
 
 ```sh

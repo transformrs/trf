@@ -1,4 +1,5 @@
 mod chat;
+mod tti;
 mod tts;
 
 use chat::ChatArgs;
@@ -6,6 +7,7 @@ use clap::Parser;
 use std::io::Read;
 use tracing::subscriber::SetGlobalDefaultError;
 use transformrs::Key;
+use tti::TextToImageArgs;
 use tts::TextToSpeechArgs;
 
 #[derive(clap::Subcommand)]
@@ -15,6 +17,11 @@ enum Commands {
     /// Takes text input from stdin and chats with an AI model.
     #[command()]
     Chat(ChatArgs),
+    /// Convert text to image
+    ///
+    /// Takes text input from stdin and converts it to an image using text-to-image models.
+    #[command()]
+    Tti(TextToImageArgs),
     /// Convert text to speech
     ///
     /// Takes text input from stdin and converts it to speech using text-to-speech models.
@@ -82,6 +89,9 @@ async fn main() {
     match args.command {
         Commands::Chat(args) => {
             chat::chat(&args, &key, &input).await;
+        }
+        Commands::Tti(args) => {
+            tti::tti(&args, &key, &input).await;
         }
         Commands::Tts(args) => {
             tts::tts(&args, &key, &input).await;
