@@ -44,10 +44,11 @@ jobs:
         id: check
         shell: bash
 
-      - run: |
-          rustup update stable
-          rustup default stable
-          rustup target add ${{ matrix.target }}
+      - run: rustup update stable
+
+      - run: rustup default stable
+
+      - run: rustup target add ${{ matrix.target }}
 
       - run: |
           SRC="target/${{ matrix.target }}/release/trf${{ steps.check.outputs.ext }}"
