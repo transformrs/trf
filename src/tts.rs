@@ -79,7 +79,7 @@ pub(crate) async fn tts(args: &TextToSpeechArgs, key: &transformrs::Key, input: 
         "Requesting text to speech for text of length {}...",
         input.len()
     );
-    let resp = transformrs::text_to_speech::tts(key, &config, model.as_deref(), input)
+    let resp = transformrs::text_to_speech::tts(&provider, key, &config, model.as_deref(), input)
         .await
         .unwrap()
         .structured()
