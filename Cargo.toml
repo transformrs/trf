@@ -22,3 +22,8 @@ predicates = "3"
 pretty_assertions = "1"
 tempfile = "3"
 toml = "0.8"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = "z"
