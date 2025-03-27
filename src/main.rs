@@ -30,11 +30,7 @@ enum Commands {
 }
 
 #[derive(Parser)]
-#[command(
-    author,
-    version,
-    about = "Ask the Terminal Anything - Use AI in the terminal"
-)]
+#[command(author, version, about = "Multimodal AI command line interface")]
 struct Arguments {
     #[command(subcommand)]
     command: Commands,
