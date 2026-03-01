@@ -21,7 +21,7 @@ assert_cmd = "2"
 predicates = "3"
 pretty_assertions = "1"
 tempfile = "3"
-toml = "0.8"
+toml = "1.0"
 
 [profile.release]
 lto = true
